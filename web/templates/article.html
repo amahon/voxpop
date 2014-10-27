@@ -1,0 +1,45 @@
+<style>
+
+    .chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: right;
+      padding: 3px;
+      margin: 1px;
+      color: white;
+    }
+
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for article in articles %}
+        <tr>
+            <td><a href='{{ article['web_url'] }}'>{{ article['headline']['main'] }}</a></td>
+            <td>{{ article['comments'].count() }}</td>
+            <td>
+                <table>
+                    <tbody>
+                        {% for comment in article['comments'] %}
+                            {% if 'sentiment' in comment %}
+                            <tr>
+                                <td><div class='chart'><div style="width: {{ comment['sentiment']['VMeanSum'] }}px;">{{ comment['sentiment']['VMeanSum'] }}</div></td>
+                                <td><div class='chart'><div style="width: {{ comment['sentiment']['AMeanSum'] }}px;">{{ comment['sentiment']['AMeanSum'] }}</div></td>
+                                <td><div class='chart'><div style="width: {{ comment['sentiment']['DMeanSum'] }}px;">{{ comment['sentiment']['DMeanSum'] }}</div></td>
+                                <td>{{ comment['commentBody'] }}</td>
+                            </tr>
+                            {% end %}
+                        {% end %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    {% end %}
+    </tbody>
+</table>

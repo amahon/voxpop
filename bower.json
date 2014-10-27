@@ -1,0 +1,16 @@
+{
+  "name": "voxpop",
+  "version": "0.0.0",
+  "homepage": "https://github.com/amahon/voxpop",
+  "authors": [
+    "Andrew Mahon (x230) <andrew@typecode.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
